@@ -4,6 +4,7 @@ runtime:
   nodePool: dynamic__x86_64__CentOS_7__c4_large
    
 services:
+  - couchdb #2.2.0
   - elasticsearch #6.4.2
   - memcached #1.5.11
   - mongodb #4.0.3
@@ -45,6 +46,8 @@ build:
     - yum list rabbitmq-server | grep rabbitmq-serve #3.6.15
     - mongod --version #4.0.3
     - elasticsearch --version #6.4.2  
+    - sleep 5
+    - curl http://127.0.0.1:5984 #2.2.0 
     - docker pull shippabledocker/sample_node_pvt:ecr
     
 integrations:
